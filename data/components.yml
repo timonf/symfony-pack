@@ -1,0 +1,51 @@
+category: Various Symfony Components
+questions:
+    -
+        id: 'ded068d9-e76e-415a-995c-2a26e9c73f9f'
+        question: 'What is the default signal sent by Process component to stop a process?'
+        versions:
+            symfony: '^2.3|~3.0|~4.0'
+        help: |
+            https://en.wikipedia.org/wiki/Signal_(IPC)
+            https://symfony.com/doc/2.3/components/process.html#stopping-a-process
+            https://github.com/symfony/process/blob/2.3/Process.php#L636
+        answers:
+            - {value: 'SIGINT',        correct: false}
+            - {value: 'SIGKILL',       correct: true}
+            - {value: 'Process::STOP', correct: false}
+            - {value: '9',             correct: true}
+    -
+        id: 'ebc9ed55-dcb0-46eb-9003-d135b57b4e95'
+        question: |
+            What can be placed in `?????` to be valid?
+
+                use Symfony\Component\Yaml\Yaml;
+
+                $value = Yaml::parse(?????);
+        versions:
+            symfony: '^2.3'
+        help: |
+            https://symfony.com/doc/2.3/components/yaml/introduction.html#reading-yaml-files
+            https://github.com/symfony/yaml/blob/2.3/Yaml.php#L44
+        answers:
+            - {value: '"/path/to/file.yml"',                    correct: false}
+            - {value: 'file_get_contents("/path/to/file.yml")', correct: false}
+            - {value: 'Both are valid',                         correct: true}
+    -
+        id: '7e89f317-dd3c-487b-9bd2-ff700e1d0d4a'
+        question: |
+            What can be placed in `?????` to be valid?
+
+                use Symfony\Component\Yaml\Yaml;
+
+                $value = Yaml::parse(?????);
+        versions:
+            symfony: '~3.0|~4.0'
+        help: |
+            https://symfony.com/doc/3.0/components/yaml.html#reading-yaml-files
+            https://github.com/symfony/yaml/blob/3.0/Yaml.php#L41
+            https://github.com/symfony/yaml/blob/3.0/Parser.php#L60
+        answers:
+            - {value: '"/path/to/file.yml"',                    correct: false}
+            - {value: 'file_get_contents("/path/to/file.yml")', correct: true}
+            - {value: 'Both are valid',                         correct: false}

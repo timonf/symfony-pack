@@ -1,52 +1,111 @@
 category: Validation
 questions:
     -
-        question: 'In order to use validation group, which interface will you implement on your object?'
+        id: '323678c9-c1fd-4657-84c1-815df6c45586'
+        question: 'In order to use validation groups dynamically depending on your object, which interface will you implement on your object?'
+        versions:
+            symfony/symfony: '^2.1|~3.0|~4.0'
+        help: |
+            https://symfony.com/doc/2.7/validation/sequence_provider.html
+            https://github.com/symfony/symfony/blob/2.1/src/Symfony/Component/Validator/GroupSequenceProviderInterface.php
         answers:
             - {value: Symfony\Component\Validator\GroupValidationInterface,         correct: false}
             - {value: Symfony\Component\Validator\GroupValidationProviderInterface, correct: false}
             - {value: Symfony\Component\Validator\GroupProviderInterface,           correct: false}
             - {value: Symfony\Component\Validator\GroupSequenceProviderInterface,   correct: true}
     -
+        id: '84dee12f-d683-42bc-8aad-8e59ea58a781'
         question: 'Using Validator component, which method is used to validate a value against a constraint?'
+        versions:
+            symfony/symfony: '~2.0'
+        help: |
+            https://api.symfony.com/2.3/Symfony/Component/Validator/ValidatorInterface.html
+            https://github.com/symfony/validator/blob/2.5/ValidatorInterface.php
         answers:
-            - {value: "$validator->validate($object, $constraint)",      correct: true}
-            - {value: "$validator->validateValue($object, $constraint)", correct: false}
-            - {value: "$validator->isValid($object, $constraint)",       correct: false}
-            - {value: "$validator->validation($object, $constraint)",    correct: false}
+            - {value: "$validator->validate($value, $groups)",      correct: true}
+            - {value: "$validator->validateValue($value, $groups)", correct: false}
+            - {value: "$validator->isValid($value, $groups)",       correct: false}
+            - {value: "$validator->validation($value, $groups)",    correct: false}
     -
-        question: 'True or False ? All entities have at least 2 validation groups.'
+        id: '88f32806-57ac-4b84-87a0-ca9304fec54c'
+        question: 'Using Validator component, which method is used to validate a value against a constraint?'
+        versions:
+            symfony/symfony: '^2.5|~3.0|~4.0'
+        help: |
+            https://symfony.com/doc/2.7/components/validator.html#usage
+            https://github.com/symfony/validator/blob/2.5/Validator/ValidatorInterface.php
+        answers:
+            - {value: "$validator->validate($value, $constraints, $groups)",      correct: true}
+            - {value: "$validator->validateValue($value, $constraints, $groups)", correct: false}
+            - {value: "$validator->isValid($value, $constraints, $groups)",       correct: false}
+            - {value: "$validator->validation($value, $constraints, $groups)",    correct: false}
+    -
+        id: '934832fc-83a7-485b-a218-a05dcd41c46d'
+        question: 'True or False? All entities have at least 2 validation groups.'
+        versions:
+            symfony/symfony: '^2.1|~3.0|~4.0'
+        help: |
+            https://symfony.com/doc/2.7/validation/groups.html
+            https://github.com/symfony/validator/blob/2.1/Tests/Mapping/ClassMetadataTest.php
         answers:
             - {value: "True",    correct: true}
             - {value: "False",   correct: false}
     -
-        question: 'True or False ? We can also apply constraints on class getters with ``addPropertyConstraint()``'
+        id: '45ef7539-1d0b-4196-a8de-d8f6fa18380e'
+        question: 'True or False? We can also apply constraints on class getters with ``addPropertyConstraint()``'
         answers:
             - {value: "True",    correct: false}
             - {value: "False",   correct: true}
     -
-        question: 'True or False ? In Symfony:'
+        id: '1b85c44a-e083-4582-bc2c-bd34c4e30c2f'
+        question: 'True or False? In Symfony Standard Edition:'
+        help: |
+            - UniqueEntity is provieded by Doctrine Bridge (not the Doctrine Bundle)
+            - Annotations are enabled by default: https://github.com/symfony/symfony-standard/blob/2.0/app/config/config.yml
+            - http://symfony.com/doc/2.0/book/validation.html#group-sequence
         answers:
-            - {value: "Annotations mapping are enabled by default",                correct: false}
+            - {value: "Annotations mapping are enabled by default",                correct: true}
             - {value: "UniqueEntity is provided by Doctrine Bundle",               correct: false}
-            - {value: "We can validate partial object with @Assert\\GroupSequence", correct: true}
+            - {value: "We can validate partial object with @Assert\GroupSequence", correct: true}
             - {value: "All assertions above are valid",                            correct: false}
     -
+        id: '32620d87-e9b2-465c-87d7-e8290ad38265'
         question: 'Which constraints exist?'
+        versions:
+            symfony/symfony: '^2.3|~3.0|~4.0'
+        help: |
+            https://symfony.com/doc/2.8/validation.html#supported-constraints
+            https://github.com/symfony/validator/tree/2.3/Constraints
         answers:
             - {value: "Blank", correct: true}
             - {value: "IdenticalTo", correct: true}
             - {value: "EqualTo", correct: true}
             - {value: "SameAs", correct: false}
     -
-        question: 'Which annotation are valid ?'
+        id: '07ea426b-fadb-4562-907c-1d7e280eeeb1'
+        question: 'Which annotations are valid?'
+        versions:
+            symfony/symfony: '~2.0|~3.0|~4.0'
+        help: |
+            https://symfony.com/doc/2.8/reference/constraints/Choice.html#basic-usage
+            https://github.com/symfony/validator/blob/2.0/Constraints/Choice.php
         answers:
             - {value: '@Assert\Choice({"male", "female", "other"})', correct: true}
             - {value: '@Assert\Choice(choices = {"male", "female", "other"})', correct: true}
             - {value: '@Assert\Choices({"male", "female", "other"})', correct: false}
             - {value: '@Assert\Choices(choices = {"male", "female", "other"})', correct: false}
     -
-        question: 'How to tell the validator to use a specific group ?'
+        id: '45ece900-8a78-49d6-846a-5d8f953b8db5'
+        question: 'How to tell the validator to use a specific group?'
+        versions:
+            symfony/symfony: '^2.5|~3.0|~4.0'
+        help: |
+            “Second argument” is true for the Symfony\Component\ValidatorInterface in Symfony 2. This interface is
+            deprecated since Symfony 2.5 in favor of Symfony\Component\Validator\ValidatorInterface, which has
+            `$groups` as third parameter on `validate` method. This interface became default since Symfony 3.0.
+
+            https://symfony.com/doc/2.7/components/validator.html#usage
+            https://github.com/symfony/validator/blob/2.5/Validator/ValidatorInterface.php
         answers:
             - {value: 'pass one or more group names as the third argument of $validator->validate()', correct: true}
             - {value: 'pass one or more group names as the second argument of $validator->validate()', correct: false}
